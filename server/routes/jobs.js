@@ -1,0 +1,15 @@
+// import controllers to direct and control routes
+
+
+const express = require('express');
+
+const router = express.Router();
+const {createJob, getAllJobs, getJob, updateJob, deleteJob} = require("../controllers/jobs");   // named import: names must match
+
+
+//set up router : REST API
+router.route('/').post(createJob).get(getAllJobs)
+router.route('/:id').get(getJob).delete(deleteJob).patch(updateJob)
+
+
+module.exports = router;
